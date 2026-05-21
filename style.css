@@ -1,0 +1,98 @@
+:root{
+	--bg: #0f1720;
+	--card: #0b1220;
+	--muted: #9aa6b2;
+	--accent: #8ab4ff;
+	--text: #e6eef6;
+	--max-width: 980px;
+	--radius: 8px;
+	--gap: 1.1rem;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	background: linear-gradient(180deg, var(--bg) 0%, #071016 100%);
+	color:var(--text);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	line-height:1.6;
+	padding:2rem 1rem;
+}
+
+/* 内容容器：保持布局结构不变但限制宽度并居中 */
+body > div{
+	max-width:var(--max-width);
+	margin:0 auto var(--gap);
+	background:transparent;
+}
+
+header{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:1rem;
+	padding:0.6rem 0;
+}
+
+nav{
+	display:flex;
+	gap:0.6rem;
+	align-items:center;
+}
+
+nav a{
+	color:var(--accent);
+	text-decoration:none;
+	padding:0.35rem 0.6rem;
+	border-radius:6px;
+	transition:background .18s ease, color .18s ease;
+	font-weight:600;
+}
+
+nav a:hover{background:rgba(138,180,255,0.08); color:#dff0ff}
+
+h1{
+	margin:0.2rem 0;
+	font-size:1.6rem;
+	letter-spacing:0.4px;
+}
+
+/* 主段落样式 */
+p{
+	color:var(--muted);
+	margin:0.6rem 0;
+	font-size:1rem;
+}
+
+/* 装饰性分隔符，保持原有内容结构但更美观 */
+div > h1:first-of-type{
+	font-size:1.05rem;
+	color:var(--accent);
+	margin-top:0.2rem;
+}
+
+/* 图片、表格等响应式 */
+img, iframe, table{max-width:100%;height:auto}
+
+/* 小屏幕优化 */
+@media (max-width:640px){
+	:root{--max-width:680px}
+	h1{font-size:1.25rem}
+	body{padding:1rem}
+	nav{gap:0.4rem}
+	nav a{padding:0.3rem 0.45rem}
+}
+
+/* 更明显的内容容器，增加卡片感*/
+.content-card{
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+	padding:1rem 1.2rem;
+	border-radius:var(--radius);
+}
+
+/* 辅助：使手头链接在段落中更易辨识 */
+a{color:var(--accent)}
+
