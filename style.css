@@ -1,8 +1,8 @@
 :root{
 	--bg: #0f1720;
 	--card: #0b1220;
-	--muted: #9aa6b2;
-	--accent: #8ab4ff;
+	--muted: #b8bfc6;
+	--accent: #ffffff;
 	--text: #e6eef6;
 	--max-width: 980px;
 	--radius: 8px;
@@ -14,7 +14,7 @@ html,body{height:100%}
 body{
 	margin:0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-	background: linear-gradient(180deg, var(--bg) 0%, #071016 100%);
+	background: linear-gradient(180deg, var(--bg) 0%, #e86d58 100%);
 	color:var(--text);
 	-webkit-font-smoothing:antialiased;
 	-moz-osx-font-smoothing:grayscale;
@@ -94,5 +94,54 @@ img, iframe, table{max-width:100%;height:auto}
 }
 
 /* 辅助：使手头链接在段落中更易辨识 */
+
 a{color:var(--accent)}
+
+/* 通用布局：SCP 编号/等级与图片容器并排，右侧占 1/4，左侧占 3/4 */
+#SCP_num_and_dengji_and_image{
+	display:flex;
+	align-items:stretch;
+	gap:1rem;
+}
+
+#SCP_num_and_dengji_and_image_left{
+	flex:0 0 75%;
+	min-width:0;
+}
+
+#image_SCP_page_little_right{
+	flex:0 0 25%;
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:center;
+	gap:0.4rem;
+	padding:0.25rem;
+	background:transparent;
+	min-height:0;
+	height:100%;
+}
+
+/* 覆盖内联 width/height，并让图片高度随右侧容器高度变化 */
+#image_SCP_page_little_right img{
+	display:block;
+	flex:1 1 auto;
+	min-height:0;
+	width:auto !important;
+	height:100% !important;
+	max-width:100%;
+	max-height:100%;
+	object-fit:contain;
+}
+
+/* 说明文字在图片下方居中 */
+#image_SCP_page_little_right p{margin:0;text-align:center;color:var(--muted);font-size:0.95rem}
+
+/* 小屏幕回退为垂直布局，防止压缩 */
+@media (max-width:640px){
+	#SCP_num_and_dengji_and_image{flex-direction:column}
+	#SCP_num_and_dengji_and_image_left,
+	#image_SCP_page_little_right{flex:1 1 100%;width:100%;max-width:100%}
+	#image_SCP_page_little_right img{width:200px !important}
+}
 
