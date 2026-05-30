@@ -2,7 +2,7 @@
 	--bg: #0f1720;
 	--card: #0b1220;
 	--muted: #b8bfc6;
-	--accent: #ffffff;
+	--accent: #000000;
 	--text: #e6eef6;
 	--max-width: 980px;
 	--radius: 8px;
@@ -144,6 +144,120 @@ a{color:var(--accent)}
 	#image_SCP_page_little_right{flex:1 1 100%;width:100%;max-width:100%}
 	#image_SCP_page_little_right img{width:200px !important}
 }
+
+/* ============================================
+   机密档案样式 —— 通用文档容器（首页/成员/列表页）
+   ============================================ */
+
+/* 文档容器 —— 纸色卡片，覆盖 body > div 的背景 */
+.scp-document {
+	position: relative;
+	background: #f5f0e8;
+	border: 1px solid #c4b99a;
+	border-radius: 4px;
+	box-shadow: 2px 3px 14px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,240,0.5);
+	padding: 0.5rem 1.8rem 1.5rem;
+	font-family: "Courier New", "Source Han Serif CN", "Noto Serif SC", "SimSun", monospace;
+	z-index: 1;
+}
+
+/* 红色 "机密" 水印 */
+.scp-document::after {
+	content: "机密";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-20deg);
+	font-size: 7rem;
+	font-weight: 900;
+	color: rgba(139, 0, 0, 0.07);
+	font-family: "Courier New", "SimSun", "Source Han Serif CN", monospace;
+	pointer-events: none;
+	user-select: none;
+	white-space: nowrap;
+	letter-spacing: 10px;
+	z-index: 0;
+}
+
+/* 内容在水印之上 */
+.scp-document > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* 导航/标题区域 */
+.scp-document #top_title {
+	margin-bottom: 0.4rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #8b0000;
+}
+
+.scp-document #top_title header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.6rem 0;
+}
+
+.scp-document #top_title header h1 {
+	color: #1a1a1a;
+	font-size: 1.3rem;
+	font-weight: 800;
+	letter-spacing: 1px;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.scp-document #top_title header nav a {
+	color: #5a4a3a;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	padding: 0.25rem 0.5rem;
+	font-family: "Courier New", "Source Han Serif CN", monospace;
+}
+
+.scp-document #top_title header nav a:hover {
+	color: #8b0000;
+	background: rgba(139,0,0,0.06);
+}
+
+/* 页面主标题（"SCP-XT档案(原本)" 等） */
+.scp-document h1 {
+	color: #1a1a1a;
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	font-family: "Courier New", "Source Han Serif CN", monospace;
+	margin: 0.5rem 0 0.3rem;
+}
+
+/* 正文段落 */
+.scp-document p {
+	color: #2a2a2a;
+	font-size: 0.85rem;
+	line-height: 1.7;
+	font-family: "Courier New", "Source Han Serif CN", "Noto Serif SC", "SimSun", serif;
+	margin: 0.3rem 0;
+}
+
+/* #main_mid_page 内标题覆盖通用 h1 */
+.scp-document #main_mid_page h1 {
+	font-size: 1.15rem;
+	color: #1a1a1a;
+	margin-bottom: 0.6rem;
+}
+
+/* 小屏 */
+@media (max-width:640px){
+	.scp-document { padding: 0.3rem 0.8rem 1rem; }
+	.scp-document::after { font-size: 4rem; letter-spacing: 6px; }
+	.scp-document #top_title header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+	.scp-document #top_title header h1 { font-size: 1.1rem; }
+}
+
 
 /* ============================================
    机密档案样式 —— SCP-XT 详细页面
