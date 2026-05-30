@@ -146,6 +146,183 @@ a{color:var(--accent)}
 }
 
 /* ============================================
+   机密档案样式 —— SCP-XT 详细页面
+   ============================================ */
+
+/* 主容器 —— 档案纸张卡片 */
+#SCP_index_box {
+	position: relative;
+	background: #f5f0e8;
+	border: 1px solid #c4b99a;
+	border-radius: 4px;
+	box-shadow: 2px 3px 14px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,240,0.5);
+	padding: 0.5rem 1.8rem 1.5rem;
+	font-family: "Courier New", "Source Han Serif CN", "Noto Serif SC", "SimSun", monospace;
+	z-index: 1;
+}
+
+/* 红色 "机密" 水印印章 */
+#SCP_index_box::after {
+	content: "机密";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-20deg);
+	font-size: 7rem;
+	font-weight: 900;
+	color: rgba(139, 0, 0, 0.07);
+	font-family: "Courier New", "SimSun", "Source Han Serif CN", monospace;
+	pointer-events: none;
+	user-select: none;
+	white-space: nowrap;
+	letter-spacing: 10px;
+	z-index: 0;
+}
+
+/* 让所有直接内容层叠在水印之上 */
+#SCP_index_box > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* 导航区域 —— 档案页眉工具条 */
+#SCP_index_box #top_title {
+	margin-bottom: 0.4rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #8b0000;
+}
+
+#SCP_index_box #top_title header nav a {
+	color: #5a4a3a;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	padding: 0.25rem 0.5rem;
+	font-family: "Courier New", "Source Han Serif CN", monospace;
+}
+
+#SCP_index_box #top_title header nav a:hover {
+	color: #8b0000;
+	background: rgba(139,0,0,0.06);
+}
+
+/* SCP 编号 + 等级 + 图片区域 —— 档案头部 */
+#SCP_index_box #SCP_num_and_dengji_and_image {
+	margin-bottom: 0.6rem;
+	padding-bottom: 0.8rem;
+	border-bottom: 1px dashed #c4b99a;
+}
+
+#SCP_index_box #SCP_num_and_dengji_and_image_left header h1 {
+	color: #1a1a1a;
+	font-size: 1.35rem;
+	font-weight: 800;
+	letter-spacing: 2px;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* 等级标签 —— 做成红色分类徽章 */
+#SCP_index_box #SCP_num_and_dengji_and_image_left h1:last-child {
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: #8b0000;
+	letter-spacing: 0.5px;
+	font-family: "Courier New", monospace;
+	margin: 0.3rem 0 0;
+}
+
+#SCP_index_box #SCP_num_and_dengji_and_image_left h1:last-child del {
+	background: transparent;
+	color: #8b0000;
+	text-decoration: line-through;
+	text-decoration-color: #8b0000;
+}
+
+/* 图片容器 */
+#image_SCP_page_little_right {
+	border: 1px solid #d4c9b0;
+	border-radius: 4px;
+	background: rgba(255,255,240,0.6);
+	padding: 0.3rem;
+}
+
+#image_SCP_page_little_right p {
+	color: #6b5b4e !important;
+	font-size: 0.7rem !important;
+	font-style: italic;
+	margin-top: 0.2rem !important;
+}
+
+/* 描述/行为区域 */
+#SCP_description_and_behavior > div {
+	border: 1px solid #d4c9b0;
+	border-radius: 4px;
+	padding: 0.7rem 1.1rem 0.5rem;
+	margin-bottom: 0.8rem;
+	background: rgba(255,255,240,0.45);
+}
+
+#SCP_description_and_behavior h1 {
+	color: #8b0000;
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	border-bottom: 1px dashed #c4b99a;
+	padding-bottom: 0.3rem;
+	margin-bottom: 0.6rem;
+	font-family: "Courier New", monospace;
+}
+
+#SCP_description_and_behavior p {
+	color: #2a2a2a;
+	font-size: 0.85rem;
+	line-height: 1.75;
+	margin-bottom: 0.5rem;
+	font-family: "Courier New", "Source Han Serif CN", "Noto Serif SC", "SimSun", serif;
+}
+
+/* 返回链接 —— 档案底部页脚 */
+#SCP_index_box .return-link {
+	margin-top: 1rem;
+	padding-top: 0.6rem;
+	border-top: 2px solid #8b0000;
+	text-align: center;
+}
+
+#SCP_index_box .return-link a {
+	color: #8b0000;
+	font-weight: 700;
+	letter-spacing: 2px;
+	font-size: 0.8rem;
+	font-family: "Courier New", monospace;
+	transition: color .15s;
+}
+
+#SCP_index_box .return-link a:hover {
+	color: #cc0000;
+	background: transparent;
+}
+
+/* del = 编辑标记（旧值替换），红色删除线 */
+#SCP_num_and_dengji_and_image_left h1:last-child del,
+#SCP_description_and_behavior p del {
+	color: #8b0000;
+	text-decoration: line-through;
+	text-decoration-color: #8b0000;
+	background: transparent;
+}
+
+/* 小屏适配 */
+@media (max-width:640px){
+	#SCP_index_box { padding: 0.3rem 0.8rem 1rem; }
+	#SCP_index_box::after { font-size: 4rem; letter-spacing: 6px; }
+	#SCP_index_box #SCP_num_and_dengji_and_image_left header h1 { font-size: 1.1rem; }
+}
+
+
+/* ============================================
    机密档案样式 —— SCP-XT 对象列表卡片
    ============================================ */
 
