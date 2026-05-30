@@ -52,7 +52,7 @@ nav a{
 	font-weight:600;
 }
 
-nav a:hover{background:rgba(138,180,255,0.08); color:#dff0ff}
+nav a:hover{background:rgba(139,0,0,0.10); color:#ff0000}
 
 h1{
 	margin:0.2rem 0;
