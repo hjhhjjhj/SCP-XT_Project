@@ -1,0 +1,12 @@
+[
+  {
+    "username": "user1",
+    "password": "123456",
+    "permission_level": "D"
+  },
+  {
+    "username": "user2",
+    "password": "123456",
+    "permission_level": "A"
+  }
+]
